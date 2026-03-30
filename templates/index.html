@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f7fa;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚀 AI Resume Analyzer</h1>
+
+<form action="/analyze" method="post">
+    <textarea name="resume" placeholder="Paste your resume here..."></textarea>
+    <br>
+    <button type="submit">Analyze</button>
+</form>
+
+{% if names %}
+<div class="card">
+    <h2>👤 Names</h2>
+    <ul>
+        {% for n in names %}
+        <li>{{ n }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if emails %}
+<div class="card">
+    <h2>📧 Emails</h2>
+    <ul>
+        {% for e in emails %}
+        <li>{{ e }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if skills %}
+<div class="card">
+    <h2>💻 Skills</h2>
+    <ul>
+        {% for s in skills %}
+        <li>{{ s }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+</body>
+</html>
