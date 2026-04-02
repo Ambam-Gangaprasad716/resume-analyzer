@@ -2,82 +2,68 @@
 <html>
 <head>
     <title>AI Resume Analyzer</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f5f7fa;
-            padding: 30px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: blue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .card {
-            background: white;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h1>🚀 AI Resume Analyzer</h1>
+<div class="container">
 
-<form action="/analyze" method="post">
-    <textarea name="resume" placeholder="Paste your resume here..."></textarea>
-    <br>
-    <button type="submit">Analyze</button>
-</form>
+    <h1>🚀 AI Resume Analyzer</h1>
 
-{% if names %}
-<div class="card">
-    <h2>👤 Names</h2>
-    <ul>
-        {% for n in names %}
-        <li>{{ n }}</li>
+    <div class="top-buttons">
+        <button onclick="toggleDark()">🌙 Dark Mode</button>
+        <button onclick="window.print()">📄 Download Report</button>
+    </div>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="resume" required>
+        <br><br>
+        <button type="submit">Upload Resume</button>
+    </form>
+
+    {% if text %}
+
+    <div class="section">
+        <h3>📄 Extracted Text</h3>
+        <p>{{ text }}</p>
+    </div>
+
+    <div class="section">
+        <h3>🧠 Detected Skills</h3>
+        {% for skill in skills %}
+            <span class="skill">{{ skill }}</span>
         {% endfor %}
-    </ul>
-</div>
-{% endif %}
+    </div>
 
-{% if emails %}
-<div class="card">
-    <h2>📧 Emails</h2>
-    <ul>
-        {% for e in emails %}
-        <li>{{ e }}</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
+    <div class="section">
+        <h3>📊 Skill Match Score</h3>
 
-{% if skills %}
-<div class="card">
-    <h2>💻 Skills</h2>
-    <ul>
-        {% for s in skills %}
-        <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ score }}%"></div>
+        </div>
+
+        <p><strong>{{ score }}%</strong></p>
+    </div>
+
+    <div class="section">
+        <h3>🎯 Suggested Job Role</h3>
+        <p><strong>{{ role }}</strong></p>
+    </div>
+
+    {% endif %}
+
+    <footer>
+        Made by Prasad 🚀
+    </footer>
+
 </div>
-{% endif %}
+
+<script>
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+</script>
 
 </body>
 </html>

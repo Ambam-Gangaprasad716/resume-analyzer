@@ -1,0 +1,156 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a85f1, #8fd3f4);
+  transition: 0.3s;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #0f172a;
+}
+
+/* MAIN CARD */
+.container {
+  width: 400px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: 0.3s;
+}
+
+body.dark .container {
+  background: rgba(0,0,0,0.5);
+  color: white;
+}
+
+/* TITLE */
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* BUTTONS */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  cursor: pointer;
+  margin: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* FILE INPUT */
+input[type="file"] {
+  margin: 10px 0;
+}
+
+/* SECTION CARDS */
+.section {
+  background: white;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  text-align: left;
+}
+
+body.dark .section {
+  background: #1e293b;
+  color: white;
+}
+
+/* TEXT BOX */
+.section p {
+  font-size: 14px;
+  line-height: 1.5;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* SKILL TAGS */
+.skills span {
+  display: inline-block;
+  background: #36d1dc;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 5px;
+  font-size: 12px;
+}
+
+/* PROGRESS BAR */
+.progress {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(to right, #00ff87, #60efff);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+/* ================= PRINT FIX ================= */
+@media print {
+
+  body {
+    background: white !important;
+    display: block !important;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 10px !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    margin-bottom: 15px;
+    border: 1px solid #ccc !important;
+  }
+
+  button,
+  input,
+  .top-buttons {
+    display: none !important;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
