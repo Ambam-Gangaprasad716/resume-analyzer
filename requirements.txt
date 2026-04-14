@@ -1,5 +1,3 @@
 Flask
 gunicorn
-pdfminer.six
-spacy
 PyPDF2
